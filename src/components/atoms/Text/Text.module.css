@@ -1,0 +1,71 @@
+.Text {
+    color: var(--dark-gray-color);
+}
+
+/* TextTheme */
+.white {
+    color: var(--white-color);
+}
+
+.dark_gray {
+    color: var(--dark-gray-color);
+}
+
+.gray {
+    color: var(--gray-color);
+}
+
+.dark {
+    color: var(--dark-color);
+}
+
+/* TextAlign */
+.right {
+    text-align: right;
+}
+
+.left {
+    text-align: left;
+}
+
+.center {
+    text-align: center;
+}
+
+/* TextSize */
+.size_xs {
+    font-size: var(--font-size-xs);
+}
+
+.size_s {
+    font-size: var(--font-size-s);
+}
+
+.size_m {
+    font-size: var(--font-size-m);
+}
+
+.size_l {
+    font-size: var(--font-size-l);
+}
+
+.size_xl {
+    font-size: var(--font-size-xl);
+}
+
+.size_xxl {
+    font-size: var(--font-size-xxl);
+}
+
+/* TextWeight */
+.weight_reg {
+    font-weight: var(--font-weight-regular);
+}
+
+.weight_bold {
+    font-weight: var(--font-weight-bold);
+}
+
+.weight_semibold {
+    font-weight: var(--font-weight-semibold);
+}

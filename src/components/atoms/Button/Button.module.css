@@ -1,0 +1,38 @@
+.Button {
+    padding: 1rem 2rem;
+    border-radius: .25rem;
+    border: none;
+    outline: none;
+    font-size: var(--font-size-s);
+    font-weight: var(--font-weight-regular);
+    cursor: pointer;
+    font-style: var(--font-size-s);
+    font-weight: var(--font-weight-regular);
+}
+
+/* ButtonTheme */
+.clear {
+    background: none;
+}
+
+.outline {
+    background: none;
+    border: 1px solid var(--dark-gray-color);
+}
+
+.red {
+    background: var(--red-color);
+}
+
+.dark {
+    background: var(--dark-gray-color);
+}
+
+/* ButtonTextColor */
+.white {
+    color: var(--white-color);
+}
+
+.dark_color {
+    color: var(--dark-gray-color);
+}

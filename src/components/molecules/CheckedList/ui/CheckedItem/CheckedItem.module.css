@@ -1,0 +1,32 @@
+.CheckedItem {
+    cursor: pointer;
+}
+
+.labelName {
+    margin-left: 10px;
+}
+
+input[type="checkbox"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 24px;
+    height: 24px;
+    border: 1px solid var(--category-border-color);
+    border-radius: 4px;
+    outline: none;
+    cursor: pointer;
+}
+
+input[type="checkbox"]:checked {
+    background-color: var(--category-border-color);
+}
+
+
+/* 425px */
+@media (max-width: 425px) {
+    input[type="checkbox"] {
+        width: 20px;
+        height: 20px;
+    }
+}

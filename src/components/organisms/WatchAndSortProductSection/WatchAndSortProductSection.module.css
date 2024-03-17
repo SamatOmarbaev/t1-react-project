@@ -1,0 +1,27 @@
+.WatchAndSortProductSection {
+    margin: 54px 0;
+}
+
+.title {
+    line-height: 1.5;
+    margin-bottom: 33px;
+}
+
+.filtersAndProducts {
+    display: flex;
+    gap: 20px;
+}
+
+/* 768px */
+@media (max-width: 768px) {
+    .WatchAndSortProductSection {
+        margin: 44px 0;
+    }
+}
+
+/* 425px */
+@media (max-width: 425px) {
+    .filtersAndProducts {
+        flex-direction: column;
+    }
+}

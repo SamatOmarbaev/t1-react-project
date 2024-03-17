@@ -1,0 +1,85 @@
+.HeroSection {
+    background-color: var(--blue-bg-color);
+    height: calc(528px - 90px);
+}
+
+.title {
+    padding-top: 4.5rem;
+    width: 580px;
+    font-weight: 400;
+    margin-bottom: 1.25rem;
+    line-height: 1.3;
+}
+
+.subTitle {
+    width: 350px;
+    margin-bottom: 2.5rem;
+    line-height: 1.5;
+}
+
+.backTitle {
+    color: rgba(255, 255, 255, 0.12);
+    font-size: 200px;
+    position: absolute;
+    transform: translate(3%, -60%);
+    z-index: 0;
+    letter-spacing: 2px;
+}
+
+.btn {
+    z-index: 1;
+    width: 201px;
+    position: relative;
+    margin-left: 15px;
+    height: 67px;
+}
+
+/* 1024px */
+@media (max-width: 1024px) {
+    .backTitle {
+        font-size: 160px;
+    }
+}
+
+/* 768px */
+@media (max-width: 768px) {
+    .title {
+        padding-top: 3.5rem;
+        width: 480px;
+        margin-bottom: 1rem;
+    }
+    .backTitle {
+        font-size: 120px;
+        transform: translate(5%, -60%);
+    }
+    .btn {
+        width: 181px;
+        height: 57px;
+    }
+}
+
+/* 425px */
+@media (max-width: 425px) {
+    .HeroSection {
+        height: calc(378px - 90px);
+    }
+    .title {
+        padding-top: 2rem;
+        width: 280px;
+        margin-bottom: .5rem;
+        font-size: var(--font-size-m);
+    }
+    .subTitle {
+        width: 250px;
+        margin-bottom: 1.5rem;
+        font-size: var(--font-size-xs);
+    }
+    .backTitle {
+        font-size: 50px;
+        transform: translate(5%, -65%);
+    }
+    .btn {
+        width: 100%;
+        margin-left: 0;
+    }
+}

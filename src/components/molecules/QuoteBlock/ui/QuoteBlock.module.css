@@ -1,0 +1,48 @@
+.QuoteBlock {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.para {
+    line-height: 1.3;
+    width: 380px;
+    margin-top: 7px;
+}
+
+.signa {
+    position: absolute;
+    top: 70%;
+    right: -20%;
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 20px;
+}
+
+.signa::after {
+    content: '';
+    height: 3px;
+    width: 30px;
+    background-color: white;
+}
+
+/* 768px */
+@media (max-width: 768px) {
+    .signa {
+        right: -10%;
+    }
+}
+
+/* 425px */
+@media (max-width: 425px) {
+    .QuoteBlock {
+        z-index: 10;
+    }
+    .para {
+        width: 280px;
+    }
+    .signa {
+        right: -5%;
+        top: 110%;
+    }
+}

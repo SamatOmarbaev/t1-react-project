@@ -1,0 +1,20 @@
+.CheckedList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 28px 168px;
+}
+
+
+/* 768px */
+@media (max-width: 768px) {
+    .CheckedList {
+        gap: 18px 108px;
+    }
+}
+
+/* 425px */
+@media (max-width: 425px) {
+    .CheckedList {
+        gap: 18px;
+    }
+}

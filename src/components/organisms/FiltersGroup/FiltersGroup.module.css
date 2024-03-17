@@ -1,0 +1,40 @@
+.FiltersGroup {
+    background-color: var(--filters-bg-color);
+    width: 280px;
+    height: 535px;
+    padding: 9px 20px;
+    border-radius: .25rem;
+}
+
+.title {
+    line-height: 1.5;
+    margin-bottom: 25px;
+}
+
+.titleTabs {
+    margin-bottom: 3px;
+}
+
+.tabs {
+    margin-bottom: 32px;
+}
+
+.btns {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.btn {
+    height: 67px;
+}
+
+/* 768px */
+@media (max-width: 768px) {
+    .FiltersGroup {
+        width: 100%;
+    }
+    .tabs {
+        margin: 0 auto 32px;
+    }
+}

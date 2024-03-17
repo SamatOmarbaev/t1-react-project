@@ -1,0 +1,21 @@
+.Applink {
+    font-size: var(--font-size-xs);
+    cursor: pointer;
+
+    &:hover {
+        opacity: .7;
+    }
+}
+
+/* AppLinkTheme */
+.white {
+    color: var(--white-color);
+}
+
+
+/* 425px */
+@media (max-width: 425px) {
+    .Applink {
+        font-size: 10px;
+    }   
+}

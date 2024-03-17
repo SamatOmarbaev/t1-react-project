@@ -1,0 +1,20 @@
+.Navigation {
+    display: flex;
+    align-items: center;
+    gap: 2.25rem;
+}
+
+/* 768px */
+@media (max-width: 768px) {
+    .Navigation {
+        gap: 1.5rem;
+    }
+}
+
+/* 425px */
+@media (max-width: 425px) {
+    .Navigation {
+        gap: 1rem;
+        flex-wrap: wrap;
+    }
+}

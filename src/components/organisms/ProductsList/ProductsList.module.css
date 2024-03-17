@@ -1,0 +1,27 @@
+.products {
+    width: 880px;
+    display: flex;
+    flex-direction: column;
+    gap: 31px;
+}
+
+.ProductsList {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    justify-items: center;
+    gap: 10px 20px;
+}
+
+.btn {
+    height: 67px;
+    width: 171px;
+    margin: 0 auto;
+}
+
+
+/* 425px */
+@media (max-width: 425px) {
+    .products {
+        width: 100%;
+    }
+}
