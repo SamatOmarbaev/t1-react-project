@@ -1,8 +1,12 @@
+import { Link } from 'react-router-dom';
 import classNames from 'classnames';
-import styles from './Navbar.module.css';
+
 import { TagType, Text, TextSize } from '../../../../atoms/Text/Text';
 import { Navigation } from '../Navigation/Navigation';
 import { Container } from '../../../../atoms/Container/Container';
+import { RoutePath } from '../../../../../router/routes';
+
+import styles from './Navbar.module.css';
 
 interface NavbarProps {
     className?: string;
@@ -20,7 +24,9 @@ export const Navbar = (props: NavbarProps) => {
     return (
         <Container>
             <div className={classNames(styles.Navbar, mods, [className])}>
-                <Text tagName='Goods4you' tagType={TagType.h1} size={TextSize.Xl} />
+                <Link to={RoutePath.HOME}>
+                    <Text tagName='Goods4you' tagType={TagType.h1} size={TextSize.Xl} />
+                </Link>
                 <Navigation last={last} />
             </div>
         </Container>

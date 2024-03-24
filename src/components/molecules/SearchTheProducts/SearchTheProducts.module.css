@@ -1,0 +1,14 @@
+.SearchTheProducts {
+    display: flex;
+    align-items: center;
+    gap: 19px;
+}
+
+.input {
+    height: 60px;
+}
+
+.btn {
+    width: 140px;
+    height: 60px;
+}

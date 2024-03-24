@@ -1,81 +1,59 @@
+import { useEffect, useState } from 'react';
 import classNames from 'classnames';
-import styles from './WatchAndSortProductSection.module.css';
+
 import { Container } from '../../atoms/Container/Container';
 import { TagType, Text, TextSize, TextTheme } from '../../atoms/Text/Text';
 import { ProductsList } from '../ProductsList/ProductsList';
-import { useMemo } from 'react';
-import { IProductCard } from '../../molecules/ProductCard/ProductCard';
-import imageProduct from '../../../assets/image-product.png'
 import { FiltersGroup } from '../FiltersGroup/FiltersGroup';
+import { useGetProductsByCategoryQuery } from '../../../features/categories/api/categoriesApi';
+import { useAppSelector } from '../../../helpers/hooks/useAppSelector';
+import { Button, ButtonTextColor, ButtonTheme } from '../../atoms/Button/Button';
+import { IProductCard } from '../../../helpers/types/types';
+
+import styles from './WatchAndSortProductSection.module.css';
 
 interface WatchAndSortProductSectionProps {
     className?: string;
 }
 
+const useGetProductsByCategoryQueryInfinite = () => {
+    const selectedCategory = useAppSelector((state) => state.categories.selectedCategory);
+    const [data, setData] = useState<IProductCard[]>([]);
+    const [skip, setSkip] = useState(0)
+    const { data: productsData, isLoading, error } = useGetProductsByCategoryQuery({
+        category: selectedCategory,
+        skip
+    });
+
+    useEffect(() => {
+        if(productsData && productsData.products) {
+            setData(prev => [...prev, ...productsData.products])
+        }
+    }, [productsData]);
+    
+    useEffect(() => {
+        setData([]);
+    }, [selectedCategory]);
+
+    const resetInfinite = () => {
+        setSkip(0);
+        setData([]);
+    }
+
+    return { data, isLoading, error, skip, setSkip,resetInfinite, total: productsData?.total || 0 }
+}
+
 export const WatchAndSortProductSection = (props: WatchAndSortProductSectionProps) => {
     const {className} = props;
+    const {data: productsData, isLoading, error, skip, setSkip, resetInfinite, total} = useGetProductsByCategoryQueryInfinite()
 
-    const products: IProductCard[] = useMemo(() => {
-        return [
-            {
-                id: 1,
-                src: imageProduct,
-                title: "Nike Air Force 1 '07 QS",
-                price: '110 $ '
-            },
-            {
-                id: 2,
-                src: imageProduct,
-                title: "Nike Air Force 1 '07 QS",
-                price: '110 $ '
-            },
-            {
-                id: 3,
-                src: imageProduct,
-                title: "Nike Air Force 1 '07 QS",
-                price: '110 $ '
-            },
-            {
-                id: 4,
-                src: imageProduct,
-                title: "Nike Air Force 1 '07 QS",
-                price: '110 $ '
-            },
-            {
-                id: 5,
-                src: imageProduct,
-                title: "Nike Air Force 1 '07 QS",
-                price: '110 $ '
-            },
-            {
-                id: 6,
-                src: imageProduct,
-                title: "Nike Air Force 1 '07 QS",
-                price: '110 $ '
-            },
-            {
-                id: 7,
-                src: imageProduct,
-                title: "Nike Air Force 1 '07 QS",
-                price: '110 $ '
-            },
-            {
-                id: 8,
-                src: imageProduct,
-                title: "Nike Air Force 1 '07 QS",
-                price: '110 $ '
-            },
-            {
-                id: 9,
-                src: imageProduct,
-                title: "Nike Air Force 1 '07 QS",
-                price: '110 $ '
-            },
-        ]
-    }, [])
+    const hasMoreProducts = productsData.length < total;
 
     return (
-       <section className={classNames(styles.WatchAndSortProductSection, {}, [className])}>
+        <section 
+            className={classNames(styles.WatchAndSortProductSection, {}, [className])}
+            id="catalog"
+        >
             <Container>
                 <Text 
                     tagType={TagType.h2}
@@ -85,10 +63,25 @@ export const WatchAndSortProductSection = (props: WatchAndSortProductSectionProp
                     className={styles.title}
                 />
                 <div className={styles.filtersAndProducts}>
-                    <FiltersGroup />
-                    <ProductsList products={products} />
+                    <FiltersGroup resetInfinite={resetInfinite} />
+                    <div className={styles.listLoad}>
+                        <ProductsList 
+                            productsData={productsData}
+                            error={error}
+                            isLoading={isLoading}
+                            className={styles.products}
+                        />
+                        {hasMoreProducts && <Button
+                            theme={ButtonTheme.RED}
+                            textColor={ButtonTextColor.WHITE}
+                            className={styles.btn}
+                            onClick={() => setSkip(skip + 9)}
+                        >
+                            Show more
+                        </Button>}
+                    </div>
                 </div>
             </Container>
-       </section>
+        </section>
     )
 }

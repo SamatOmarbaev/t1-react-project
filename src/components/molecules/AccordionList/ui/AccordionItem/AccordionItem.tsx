@@ -1,9 +1,11 @@
-import classNames from 'classnames';
-import styles from './AccordionItem.module.css';
-import { TagType, Text, TextSize, TextTheme } from '../../../../atoms/Text/Text';
 import { memo, useState } from 'react';
-import { FAQItem } from '../../types';
+import classNames from 'classnames';
 import { RxCross1 } from "react-icons/rx";
+
+import { TagType, Text, TextSize, TextTheme } from '../../../../atoms/Text/Text';
+import { FAQItem } from '../../types';
+
+import styles from './AccordionItem.module.css';
 
 interface AccordionItemProps {
     className?: string;

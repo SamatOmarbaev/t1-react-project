@@ -1,21 +1,24 @@
+import { memo, useCallback } from 'react';
 import classNames from 'classnames';
-import styles from './TabsList.module.css';
-import { useState } from 'react';
+
 import { Button, ButtonTheme } from '../../atoms/Button/Button';
 import { TagType, Text, TextSize, TextTheme, TextWeight } from '../../atoms/Text/Text';
+
+import styles from './TabsList.module.css';
 
 interface TabsListProps {
     className?: string;
     categories: string[];
+    activeCategory: string | null;
+    setActiveCategory: (value: string | null) => void;
 }
 
-export const TabsList = (props: TabsListProps) => {
-    const {className, categories} = props;
-    const [activeCategory, setActiveCategory] = useState(categories[0]);
+export const TabsList = memo((props: TabsListProps) => {
+    const {className, categories, activeCategory, setActiveCategory} = props;
 
-    const handleTabChange = (category: string) => {
+    const handleTabChange = useCallback((category: string | null) => {
       setActiveCategory(category);
-    };
+    }, [setActiveCategory]);
 
     return (
         <ul className={classNames(styles.TabsList, {}, [className])}>
@@ -33,11 +36,11 @@ export const TabsList = (props: TabsListProps) => {
                             weight={TextWeight.SEMIBOLD}
                             theme={TextTheme.DARK_GRAY}
                             tagName={category}
-                            className={classNames('', [category === activeCategory ? styles.active : null])}
+                            className={classNames('', [category === activeCategory ? styles.activeColor : null])}
                         />
                     </Button>
                 </li>
             ))}
         </ul>
     )
-}
+})

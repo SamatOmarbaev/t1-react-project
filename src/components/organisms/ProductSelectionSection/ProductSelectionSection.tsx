@@ -1,11 +1,16 @@
+import { useEffect } from 'react';
 import classNames from 'classnames';
-import styles from './ProductSelectionSection.module.css';
+
 import { Container } from '../../atoms/Container/Container';
 import { TagType, Text, TextSize, TextTheme } from '../../atoms/Text/Text';
 import { Button, ButtonTheme } from '../../atoms/Button/Button';
 import { CheckedList } from '../../molecules/CheckedList';
-import { Category } from '../../molecules/CheckedList/types';
-import { useMemo } from 'react';
+import { useAppDispatch } from '../../../helpers/hooks/useAppDispatch';
+import { useAppSelector } from '../../../helpers/hooks/useAppSelector';
+import { useGetCategoriesQuery } from '../../../features/categories/api/categoriesApi';
+import { setCategories } from '../../../features/categories/categoriesSlice/categoriesSlice';
+
+import styles from './ProductSelectionSection.module.css';
 
 interface ProductSelectionSectionProps {
     className?: string;
@@ -13,36 +18,18 @@ interface ProductSelectionSectionProps {
 
 export const ProductSelectionSection = (props: ProductSelectionSectionProps) => {
     const {className} = props;
+    const dispatch = useAppDispatch();
+    const categories = useAppSelector((state) => state.categories.categories);
+    const { data: categoriesData } = useGetCategoriesQuery('');
 
-    const categories: Category[] = useMemo(() => {
-        return [
-            { id: 1, name: 'sneakers' },
-            { id: 2, name: 'sneakers' },
-            { id: 3, name: 'sneakers' },
-            { id: 4, name: 'sneakers' },
-            { id: 5, name: 'sneakers' },
-            { id: 6, name: 'sneakers' },
-            { id: 7, name: 'sneakers' },
-            { id: 8, name: 'sneakers' },
-            { id: 9, name: 'sneakers' },
-            { id: 10, name: 'sneakers' },
-            { id: 11, name: 'sneakers' },
-            { id: 12, name: 'sneakers' },
-            { id: 13, name: 'sneakers' },
-            { id: 14, name: 'sneakers' },
-            { id: 15, name: 'sneakers' },
-            { id: 16, name: 'sneakers' },
-            { id: 17, name: 'sneakers' },
-            { id: 18, name: 'sneakers' },
-            { id: 19, name: 'sneakers' },
-            { id: 20, name: 'sneakers' },
-            { id: 21, name: 'sneakers' },
-            { id: 22, name: 'sneakers' },
-        ]
-    }, []);
+    useEffect(() => {
+        if (categoriesData) {
+            dispatch(setCategories(categoriesData));
+        }
+    }, [categoriesData, dispatch]);
 
     return (
-       <section className={classNames(styles.ProductSelection, {}, [className])}>
+       <section id="product" className={classNames(styles.ProductSelection, {}, [className])}>
             <Container>
                 <Text 
                     tagType={TagType.h2}
@@ -66,7 +53,9 @@ export const ProductSelectionSection = (props: ProductSelectionSectionProps) => 
                     className={styles.question}
                 />
                 <div className={styles.checkList}>
-                    <CheckedList categories={categories} />
+                    <CheckedList 
+                        categories={categories}
+                    />
                 </div>
                 <div className={styles.paginationBottom}>
                     <Text

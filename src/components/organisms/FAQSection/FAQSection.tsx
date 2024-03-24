@@ -1,10 +1,12 @@
-import styles from './FAQSection.module.css';
-import { Container } from '../../atoms/Container/Container';
+import { useMemo } from 'react';
 import classNames from 'classnames';
+
+import { Container } from '../../atoms/Container/Container';
 import { TagType, Text, TextSize, TextTheme } from '../../atoms/Text/Text';
 import { AccordionList } from '../../molecules/AccordionList';
-import { useMemo } from 'react';
 import { FAQItem } from '../../molecules/AccordionList/types';
+
+import styles from './FAQSection.module.css';
 
 interface FAQSectionProps {
     className?: string;
@@ -27,7 +29,7 @@ export const FAQSection = (props: FAQSectionProps) => {
     }, [])
 
     return (
-       <section className={classNames(styles.FAQSection, {}, [className])}>
+       <section id="faq" className={classNames(styles.FAQSection, {}, [className])}>
             <Container>
                 <Text 
                     tagType={TagType.h2}

@@ -44,7 +44,7 @@
 /* 768px */
 @media (max-width: 768px) {
     .BlockImagesTeamsSection {
-        height: 690px;
+        height: 100%;
     }
     .photos {
         gap: 1rem;
@@ -56,9 +56,6 @@
 
 /* 425px */
 @media (max-width: 425px) {
-    .BlockImagesTeamsSection {
-        height: 100%;
-    }
     .circleRed {
         width: 150px;
     }

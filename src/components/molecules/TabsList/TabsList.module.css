@@ -17,5 +17,8 @@
 
 .active {
     background-color: var(--category-border-color);
+}
+
+.activeColor {
     color: var(--white-color);
 }

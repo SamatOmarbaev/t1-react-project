@@ -1,14 +1,15 @@
-import classNames from 'classnames';
-import styles from './CheckedItem.module.css';
-import { Category } from '../../types';
-import { TagType, Text, TextSize, TextTheme } from '../../../../atoms/Text/Text';
 import { memo } from 'react';
+import classNames from 'classnames';
+
+import { TagType, Text, TextSize, TextTheme } from '../../../../atoms/Text/Text';
+
+import styles from './CheckedItem.module.css';
 
 interface CheckedItemProps {
     className?: string;
-    category: Category;
+    category: string;
     checked?: boolean;
-    onChange: () => void;
+    onChange?: () => void;
 }
 
 export const CheckedItem = memo((props: CheckedItemProps) => {
@@ -21,8 +22,7 @@ export const CheckedItem = memo((props: CheckedItemProps) => {
                 size={TextSize.S}
                 tagType={TagType.SPAN}
                 theme={TextTheme.DARK_GRAY}
-                tagName={category.name}
-                className={styles.labelName}
+                tagName={category}
             />
         </label>
     )

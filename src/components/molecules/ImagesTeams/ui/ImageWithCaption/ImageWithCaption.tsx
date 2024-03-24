@@ -1,8 +1,11 @@
 import { memo } from 'react';
-import styles from './ImageWithCaption.module.css'
 import classNames from 'classnames';
+
 import { TagType, Text, TextAlign, TextSize } from '../../../../atoms/Text/Text';
 import { ImagePr } from '../../types';
+import { MyImage } from '../../../../atoms/MyImage/MyImage';
+
+import styles from './ImageWithCaption.module.css'
 
 interface ImageWithCaptionProps {
     className?: string;
@@ -14,7 +17,7 @@ export const ImageWithCaption = memo((props: ImageWithCaptionProps) => {
 
     return (
         <div className={classNames(styles.imageContainer, {}, [className])}>
-            <img src={image.src} alt="Image" className={styles.image} />
+            <MyImage src={image.src} alt="photo of a team member" className={styles.image} />
             <div className={styles.overlay}>
                 <Text 
                     align={TextAlign.CENTER} 

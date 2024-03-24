@@ -1,5 +1,6 @@
 import { memo } from 'react';
 import classNames from 'classnames';
+
 import styles from './Text.module.css';
 
 export enum TextTheme {
@@ -7,6 +8,7 @@ export enum TextTheme {
     DARK_GRAY = 'dark_gray',
     GRAY = 'gray',
     DARK = 'dark',
+    ERROR = 'error',
 }
   
 export enum TextAlign {
@@ -56,7 +58,7 @@ const mapTagType: Record<TagType, MapTagType> = {
   
 interface TextProps {
     className?: string;
-    tagName?: string;
+    tagName?: string | number;
     tagType: TagType;
     theme?: TextTheme;
     align?: TextAlign;

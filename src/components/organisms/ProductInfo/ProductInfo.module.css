@@ -1,0 +1,63 @@
+.ProductInfo {
+    padding: 55px 0 190px;
+}
+
+.title {
+    margin: 0 0 55px 0;
+}
+
+.infoContentProduct {
+    display: flex;
+    gap: 42px;
+}
+
+@media (max-width: 768px) {
+    .infoContentProduct {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 425px) {
+    .title {
+        margin: 0 0 25px 0;
+    }
+}
+
+
+/* skeleton */
+.skeletonGallery {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.skeletonImagesList {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.SpecificationSkeleton {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+}
+
+.specificTitleSkeleton {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.SpecificationSkeletonList {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+@media (max-width: 768px) {
+    .ProductInfo {
+        padding: 25px 0 90px;
+    }
+}

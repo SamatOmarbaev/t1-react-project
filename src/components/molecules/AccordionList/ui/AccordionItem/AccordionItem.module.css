@@ -2,9 +2,6 @@
     padding: 30px 0 21px;
     border-bottom: 1px solid var(--dark-gray-color);
 }
-.AccordionItem:first-child {
-    border-top: 1px solid var(--dark-gray-color);
-}
 
 .title {
     display: flex;

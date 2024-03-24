@@ -11,11 +11,3 @@
 .white {
     color: var(--white-color);
 }
-
-
-/* 425px */
-@media (max-width: 425px) {
-    .Applink {
-        font-size: 10px;
-    }   
-}

@@ -1,17 +1,21 @@
+import { memo } from 'react';
 import classNames from 'classnames';
-import styles from './Header.module.css';
+
 import { Navbar } from '../../molecules/Navbar';
+
+import styles from './Header.module.css';
 
 interface HeaderProps {
     className?: string;
+    borderBottom?: boolean;
 }
 
-export const Header = (props: HeaderProps) => {
-    const {className} = props;
+export const Header = memo((props: HeaderProps) => {
+    const {className, borderBottom} = props;
 
     return (
         <header className={classNames(styles.Header, {}, [className])}>
-            <Navbar borderBottom />
+           <Navbar borderBottom={borderBottom} />
         </header>
     )
-}
+})

@@ -1,0 +1,37 @@
+.ProductAllInfo {
+    padding-bottom: 99px;
+}
+
+.title {
+    line-height: 1.5;
+    margin-top: 55px;
+    margin-bottom: 50px;
+}
+
+.formSearch {
+    margin-bottom: 50px;
+}
+
+.listLoad {
+    display: flex;
+    flex-direction: column;
+    gap: 55px;
+}
+
+.btn {
+    height: 67px;
+    width: 171px;
+    margin: 0 auto;
+}
+
+
+@media (max-width: 425px) {
+    .title {
+        margin-top: 25px;
+        margin-bottom: 20px;
+    }
+
+    .formSearch {
+        margin-bottom: 20px;
+    }
+}
