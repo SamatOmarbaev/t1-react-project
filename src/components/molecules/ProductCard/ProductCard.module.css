@@ -1,0 +1,25 @@
+.ProductCard {
+    display: flex;
+    flex-direction: column;
+    width: 280px;
+    height: 358px;
+    cursor: pointer;
+}
+
+.image {
+    margin-bottom: 10px;
+}
+
+.title {
+    margin-bottom: 3px;
+}
+
+
+/* 768px */
+@media (max-width: 768px) {
+    .ProductCard {
+        width: 250px;
+        height: 338px;
+    }
+    
+}

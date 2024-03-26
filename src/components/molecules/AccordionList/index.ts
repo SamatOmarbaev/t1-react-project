@@ -1,0 +1,1 @@
+export { AccordionList } from "./ui/AccordionList/AccordionList";

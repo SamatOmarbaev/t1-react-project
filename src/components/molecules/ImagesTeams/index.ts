@@ -1,0 +1,1 @@
+export { ImagesTeams } from "./ui/ImagesTeams/ImagesTeams";

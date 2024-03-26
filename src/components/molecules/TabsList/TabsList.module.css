@@ -1,0 +1,21 @@
+.TabsList {
+    display: flex;
+    flex-wrap: wrap;
+    border: 1px solid var(--category-border-color);
+    border-radius: .125rem;
+    width: 242px;
+}
+
+.btn {
+    width: 120px;
+    height: 57px;
+    padding: 0;
+    background-color: transparent;
+    border: 1px solid var(--category-border-color);
+    border-radius: 0;
+}
+
+.active {
+    background-color: var(--category-border-color);
+    color: var(--white-color);
+}

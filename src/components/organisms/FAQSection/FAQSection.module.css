@@ -1,0 +1,25 @@
+.FAQSection {
+    padding: 60px 0 105px;
+    width: 880px;
+    margin: 0 auto;
+}
+
+.title {
+    margin-bottom: 27px;
+}
+
+/* 768px */
+@media (max-width: 768px) {
+    .FAQSection {
+        width: 680px;
+        padding: 40px 0 85px;
+    }
+}
+
+/* 425px */
+@media (max-width: 425px) {
+    .FAQSection {
+        width: 100%;
+        padding: 40px 0 85px;
+    }
+}
