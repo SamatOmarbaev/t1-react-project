@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import classNames from 'classnames';
 
 import { TagType, Text, TextSize, TextTheme } from '../../atoms/Text/Text';
@@ -9,8 +9,9 @@ import { useGetProductsQuery } from '../../../features/products/api/productsApi'
 import { Button, ButtonTextColor, ButtonTheme } from '../../atoms/Button/Button';
 import { useAppDispatch } from '../../../helpers/hooks/useAppDispatch';
 import { useAppSelector } from '../../../helpers/hooks/useAppSelector';
-import { setSearchQuery } from '../../../features/products/productsSlice/productsSlice';
+import { setSearchQuery } from '../../../features/products/slices/productsSlice';
 import { useDebounce } from '../../../helpers/hooks/useDebounce';
+import { IProductCard } from '../../../helpers/types/types';
 
 import styles from './ProductAllInfo.module.css';
 
@@ -20,26 +21,44 @@ interface ProductAllInfoProps {
 
 export const ProductAllInfo = (props: ProductAllInfoProps) => {
     const {className} = props;
-    const [loadedProductsCount, setLoadedProductsCount] = useState(9);
+    const [data, setData] = useState<IProductCard[]>([]);
+    const [skip, setSkip] = useState<number>(0)
     const dispatch = useAppDispatch();
     const searchQuery = useAppSelector(state => state.products.searchQuery);
-    const searchQueryDebounced = useDebounce(searchQuery, 300);
+    const searchQueryDebounced = useDebounce(searchQuery, 500);
     const {data: productsData, error, isLoading} = useGetProductsQuery({
-        limit: loadedProductsCount,
-        search: searchQueryDebounced
+        search: searchQueryDebounced,
+        skip
     })
     const total = productsData?.total || 0;
-    const hasMoreProducts = productsData && productsData?.products.length < total;
+    const hasMoreProducts = data.length < total;
+    
+    useEffect(() => {
+        setData([])
+        setSkip(0)
+    }, [searchQueryDebounced]);
+
+    useEffect(() => {
+        if(productsData && productsData.products) {
+            setData(prev => [...prev, ...productsData.products])
+        }
+    }, [productsData]);
+
+    useEffect(() => {
+        setSkip(0)
+    }, []);
 
     const handleShowMore = () => {
         if (productsData) {
-            setLoadedProductsCount(prevCount => prevCount + 9);
+            setSkip(prev => prev + 9)
         }
     }
 
     const handleSearch = (searchValue: string) => {
         dispatch(setSearchQuery(searchValue));
-        setLoadedProductsCount(0);
+        if (searchValue === '') {
+            return
+        }
     }
 
     return (
@@ -57,9 +76,9 @@ export const ProductAllInfo = (props: ProductAllInfoProps) => {
                     value={searchQuery}
                     onSearch={handleSearch}
                 />
-                <div className={styles.listLoad}>
+                {productsData && <div className={styles.listLoad}>
                     <ProductsList 
-                        productsData={productsData?.products}
+                        productsData={data}
                         error={error}
                         isLoading={isLoading}
                     />
@@ -68,10 +87,11 @@ export const ProductAllInfo = (props: ProductAllInfoProps) => {
                         textColor={ButtonTextColor.WHITE}
                         className={styles.btn}
                         onClick={handleShowMore}
+                        aria-label='показать еще'
                     >
                         Show more
                     </Button>}
-                </div>
+                </div>}
             </Container>
         </section>
     )

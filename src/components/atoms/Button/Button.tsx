@@ -17,13 +17,13 @@ export enum ButtonTextColor {
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     className?: string;
-    theme: ButtonTheme;
+    theme?: ButtonTheme;
     textColor?: ButtonTextColor;
     children: ReactNode;
 }
 
 export const Button = memo((props: ButtonProps) => {
-    const {children, className, textColor = ButtonTextColor.DARK, theme, ...otherProps} = props;
+    const {children, className, textColor = ButtonTextColor.DARK, theme = ButtonTheme.OUTLINE, ...otherProps} = props;
 
     const mods = {
         [styles[theme]]: theme,

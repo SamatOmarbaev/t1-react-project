@@ -1,4 +1,4 @@
-import { memo } from 'react';
+import { ReactNode, memo } from 'react';
 import classNames from 'classnames';
 
 import styles from './Text.module.css';
@@ -58,7 +58,7 @@ const mapTagType: Record<TagType, MapTagType> = {
   
 interface TextProps {
     className?: string;
-    tagName?: string | number;
+    tagName?: string | number | ReactNode;
     tagType: TagType;
     theme?: TextTheme;
     align?: TextAlign;

@@ -8,16 +8,21 @@ import styles from './CheckedItem.module.css';
 interface CheckedItemProps {
     className?: string;
     category: string;
-    checked?: boolean;
-    onChange?: () => void;
+    onChange: (value: string) => void;
 }
 
 export const CheckedItem = memo((props: CheckedItemProps) => {
-    const {className, category, checked, onChange} = props;
+    const {className, category, onChange} = props;
+
+    const handleChange = () => {
+        if (onChange) {
+            onChange(category)
+        }
+    }
 
     return (
         <label className={classNames(styles.CheckedItem, {}, [className])}>
-            <input type="checkbox" checked={checked} onChange={onChange} />
+            <input type="checkbox" onChange={handleChange} aria-label='выбрать категорию' />
             <Text 
                 size={TextSize.S}
                 tagType={TagType.SPAN}

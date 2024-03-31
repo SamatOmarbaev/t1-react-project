@@ -67,7 +67,7 @@ export const BlockImagesTeamsSection = (props: BlockImagesTeamsSectionProps) => 
                         />
                     </div>
                 </article>
-                <MyImage src={CircleRed} alt="circle red" className={styles.circleRed} />
+                <MyImage src={CircleRed} className={styles.circleRed} />
             </Container>
        </section>
     )

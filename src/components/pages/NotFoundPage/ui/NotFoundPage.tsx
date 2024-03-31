@@ -26,6 +26,7 @@ const NotFoundPage = () => {
             <Button 
                 onClick={() => navigate(RoutePath.HOME)}
                 theme={ButtonTheme.OUTLINE}
+                aria-label='вернуться домой'
             >
                 Back Home
             </Button>

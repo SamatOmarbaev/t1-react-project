@@ -20,3 +20,8 @@
     height: 350px;
     cursor: pointer;
 }
+
+.productsError {
+    display: flex;
+    justify-content: center;
+}

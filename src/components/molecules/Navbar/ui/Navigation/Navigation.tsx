@@ -1,4 +1,4 @@
-import { memo, useState } from 'react';
+import { memo } from 'react';
 import classNames from 'classnames';
 
 import { Applink } from '../../../../atoms/Applink/Applink';
@@ -9,11 +9,11 @@ import styles from './Navigation.module.css';
 interface NavigationProps {
     className?: string;
     last?: boolean;
+    isAdminPage?: boolean;
 }
 
 export const Navigation = memo((props: NavigationProps) => {
-    const {className, last = true} = props;
-    const [isAdminPage, setIsAdminPage] = useState(false);
+    const {className, last = true, isAdminPage} = props;
 
     const smoothScroll = (id: string) => {
         const element = document.getElementById(id);
@@ -22,27 +22,10 @@ export const Navigation = memo((props: NavigationProps) => {
         }
     };
 
-    // useEffect(() => {
-    //     const storedIsAdminPage = localStorage.getItem('isAdminPage');
-    //     if (storedIsAdminPage) {
-    //         setIsAdminPage(JSON.parse(storedIsAdminPage));
-    //     }
-    // }, []);
-
-    const handleAdminLinkClick = () => {
-        setIsAdminPage(true);
-        // localStorage.setItem('isAdminPage', JSON.stringify(true));
-    };
-
-    const handleBackToSiteClick = () => {
-        setIsAdminPage(false);
-        // localStorage.setItem('isAdminPage', JSON.stringify(false));
-    };
-
     return (
        <nav className={classNames(styles.Navigation, {}, [className])}>
             {isAdminPage ? (
-                <Applink to={RoutePath.HOME} onClick={handleBackToSiteClick}>
+                <Applink to={RoutePath.HOME} >
                     Back to site
                 </Applink>
             ) : (
@@ -62,7 +45,7 @@ export const Navigation = memo((props: NavigationProps) => {
                     <Applink onClick={() => smoothScroll('faq')}>
                         FAQ
                     </Applink>
-                    {last &&  <Applink to={RoutePath.ADMIN} onClick={handleAdminLinkClick}>
+                    {last &&  <Applink to={RoutePath.ADMIN} >
                         For staff
                     </Applink>}
                 </>

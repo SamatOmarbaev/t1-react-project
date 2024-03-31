@@ -1,4 +1,4 @@
-import { memo, useState } from 'react';
+import { memo, useRef, useState } from 'react';
 import classNames from 'classnames';
 import { RxCross1 } from "react-icons/rx";
 
@@ -14,7 +14,8 @@ interface AccordionItemProps {
 
 export const AccordionItem = memo((props: AccordionItemProps) => {
     const {className, faq} = props;
-    const [isOpen, setIsOpen] = useState(false);
+    const [isOpen, setIsOpen] = useState<boolean>(false);
+    const contentRef = useRef<HTMLDivElement>(null);
 
     const toggleAccordion = () => (
         setIsOpen(!isOpen)
@@ -23,8 +24,9 @@ export const AccordionItem = memo((props: AccordionItemProps) => {
     return (
        <article className={classNames(styles.AccordionItem, {}, [className])}>
             <div
-                className={classNames(styles.title, [isOpen ? styles.open : styles.title])} 
+                className={classNames(styles.title)} 
                 onClick={toggleAccordion}
+                aria-label='открыть / закрыть контент'
             >
                 <Text
                     tagType={TagType.h4}
@@ -32,19 +34,23 @@ export const AccordionItem = memo((props: AccordionItemProps) => {
                     tagName={faq.title}
                     theme={TextTheme.DARK_GRAY}
                 />
-                <span className={classNames(styles.icon, [isOpen ? styles.rotate : styles.icon])}>
-                    <RxCross1 size={25} className={classNames(styles.icon, [isOpen ? styles.rotate : styles.icon])} />
-                </span>
+                <RxCross1 size={25} className={classNames(styles.icon, [isOpen ? styles.rotate : styles.icon])} />
             </div>
-            {isOpen && (
-                <Text
-                    tagType={TagType.P}
-                    size={TextSize.S}
-                    tagName={faq.content}
-                    className={classNames(styles.content, [isOpen ? styles.open : styles.closed])}
-                    theme={TextTheme.GRAY}
-                />
-            )}
+            <div 
+                className={classNames(styles.collapse, [isOpen ? styles.open : styles.collapse])}
+                style={isOpen ? {height: contentRef.current?.scrollHeight || 'auto'} : {height: '0px'}}
+            >
+                <article 
+                    ref={contentRef}
+                >
+                    <Text
+                        tagType={TagType.P}
+                        size={TextSize.S}
+                        tagName={faq.content}
+                        theme={TextTheme.GRAY}
+                    />
+                </article>
+            </div>
        </article>
     )
 })

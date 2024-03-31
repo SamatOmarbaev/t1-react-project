@@ -25,7 +25,7 @@
 
 .btn {
     height: 67px;
-    width: 171px;
+    min-width: 171px;
     margin: 0 auto;
 }
 

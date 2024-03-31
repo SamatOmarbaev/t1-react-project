@@ -1,0 +1,26 @@
+.checkList {
+    margin: 0 0 20px; 
+    background-color: var(--category-border-color);
+    padding: 35px 40px;
+    border-radius: .25rem;
+}
+.title {
+    border-bottom: 1px solid var(--gray-color);
+    margin: 0 0 20px; 
+    padding-bottom: 33px;
+}
+.CheckedListItems {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+/* 1024px */
+@media (max-width: 1024px) {
+    .CheckedListItems {
+        flex-direction: column;
+    }
+    .productCard {
+        width: auto;
+    }
+}

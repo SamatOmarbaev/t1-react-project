@@ -14,7 +14,7 @@ interface MyImageProps {
 
 export const MyImage = memo((props: MyImageProps) => {
   const {
-    className, height, width, border, src, alt
+    className, height, width, border, src, alt,
   } = props;
 
   const cls: CSSProperties = {
@@ -28,7 +28,7 @@ export const MyImage = memo((props: MyImageProps) => {
       className={classNames('', {}, [className])}
       style={cls}
     >
-        <img src={src} alt={alt} className={styles.images} />
+        <img loading='lazy' src={src} alt={alt} className={styles.images} />
     </div>
   );
 });

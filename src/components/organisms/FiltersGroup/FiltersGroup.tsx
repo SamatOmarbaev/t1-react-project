@@ -21,23 +21,23 @@ export const FiltersGroup = memo((props: FiltersGroupProps) => {
     const dispatch = useAppDispatch();
     const categories = useAppSelector((state) => state.categories.categories);
     const [tempSelectedCategory, setTempSelectedCategory] = useState<string | null>(null);
-    const { data: categoriesData } = useGetCategoriesQuery('');
+    const { data: categoriesData, isLoading, error } = useGetCategoriesQuery('');
 
     const handleFilterByCategory = useCallback((category: string | null) => {
         setTempSelectedCategory(category);
     }, []);
 
-    const applyFilter = useCallback(() => {
+    const applyFilter = () => {
         if (tempSelectedCategory) {
             dispatch(setSelectedCategory(tempSelectedCategory));
             resetInfinite();
         }
-    }, [dispatch, tempSelectedCategory, resetInfinite]);
+    }
 
-    const resetFilter = useCallback(() => {
+    const resetFilter = () => {
         dispatch(setSelectedCategory(''));
         setTempSelectedCategory(null);
-    }, [dispatch]);
+    };
 
     useEffect(() => {
         if (categoriesData) {
@@ -68,6 +68,8 @@ export const FiltersGroup = memo((props: FiltersGroupProps) => {
                 categories={categories} 
                 activeCategory={tempSelectedCategory} 
                 setActiveCategory={handleFilterByCategory}
+                isLoading={isLoading}
+                error={error}
             />
             <div className={styles.btns}>
                 <Button
@@ -75,6 +77,7 @@ export const FiltersGroup = memo((props: FiltersGroupProps) => {
                     textColor={ButtonTextColor.WHITE}
                     className={styles.btn}
                     onClick={applyFilter}
+                    aria-label='отправка запроса'
                 >
                     Apply
                 </Button>
@@ -82,6 +85,7 @@ export const FiltersGroup = memo((props: FiltersGroupProps) => {
                     theme={ButtonTheme.CLEAR}
                     className={styles.btn}
                     onClick={resetFilter}
+                    aria-label='сброс фильтров'
                 >
                     Reset
                 </Button>
