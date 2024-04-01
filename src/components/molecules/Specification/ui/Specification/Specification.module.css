@@ -1,0 +1,18 @@
+.Specification {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+}
+
+.title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+@media (max-width: 425px) {
+    .Specification {
+        gap: 32px;
+    }
+}

@@ -1,9 +1,13 @@
+import { Footer } from '../../../organisms/Footer/Footer';
 import { HomePageTemplate } from '../../../templates/HomePageTemplate/HomePageTemplate';
 
 const HomePage = () => {
     return (
        <>
-            <HomePageTemplate />
+            <main className="mainContent">
+                <HomePageTemplate />
+            </main>
+            <Footer />
        </>
     )
 }

@@ -12,6 +12,23 @@
     gap: 20px;
 }
 
+.products {
+    width: 100%;
+}
+
+.listLoad {
+    display: flex;
+    flex-direction: column;
+    gap: 55px;
+    width: 100%;
+}
+
+.btn {
+    height: 67px;
+    width: 171px;
+    margin: 0 auto;
+}
+
 /* 768px */
 @media (max-width: 768px) {
     .WatchAndSortProductSection {

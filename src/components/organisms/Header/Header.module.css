@@ -2,3 +2,9 @@
     background-color: var(--blue-bg-color);
     height: 90px;
 }
+
+@media (max-width: 425px) {
+    .Header {
+        height: auto;
+    }
+}

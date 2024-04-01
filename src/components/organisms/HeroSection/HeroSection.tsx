@@ -1,8 +1,10 @@
 import classNames from 'classnames';
-import styles from './HeroSection.module.css';
+
 import { TagType, Text, TextSize, TextWeight } from '../../atoms/Text/Text';
 import { Button, ButtonTextColor, ButtonTheme } from '../../atoms/Button/Button'
 import { Container } from '../../atoms/Container/Container';
+
+import styles from './HeroSection.module.css';
 
 interface HeroSectionProps {
     className?: string;

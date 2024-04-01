@@ -1,16 +1,20 @@
+import { useMemo } from 'react';
 import classNames from 'classnames';
-import styles from './BlockImagesTeamsSection.module.css';
+
 import { Container } from '../../atoms/Container/Container';
 import { TagType, Text, TextSize } from '../../atoms/Text/Text';
-import CircleRed from '../../../assets/imagesTeamCircleRed.svg'
 import { ImagesTeams } from '../../molecules/ImagesTeams';
+
+import CircleRed from '../../../assets/imagesTeamCircleRed.svg'
 import MenGlasses from '../../../assets/menGlasses.jpg'
 import WomanGlasses from '../../../assets/womanGlasses.jpg'
 import WomanKrik from '../../../assets/womankrik.jpg'
 import JustMen from '../../../assets/justMen.jpg'
 import MenWithPhone from '../../../assets/menWithPhone.jpg'
 import PostWoman from '../../../assets/postWoman.jpg'
-import { useMemo } from 'react';
+import { MyImage } from '../../atoms/MyImage/MyImage';
+
+import styles from './BlockImagesTeamsSection.module.css';
 
 interface BlockImagesTeamsSectionProps {
     className?: string;
@@ -18,7 +22,6 @@ interface BlockImagesTeamsSectionProps {
 
 export const BlockImagesTeamsSection = (props: BlockImagesTeamsSectionProps) => {
     const {className} = props;
-
     
     const imagesFirst = useMemo(() => {
         return [
@@ -42,7 +45,7 @@ export const BlockImagesTeamsSection = (props: BlockImagesTeamsSectionProps) => 
     }, []);
 
     return (
-       <section className={classNames(styles.BlockImagesTeamsSection, {}, [className])}>
+       <section id="team" className={classNames(styles.BlockImagesTeamsSection, {}, [className])}>
             <Container>
                 <article className={styles.content}>
                     <Text 
@@ -64,7 +67,7 @@ export const BlockImagesTeamsSection = (props: BlockImagesTeamsSectionProps) => 
                         />
                     </div>
                 </article>
-                <img src={CircleRed} alt="circle red" className={styles.circleRed} />
+                <MyImage src={CircleRed} alt="circle red" className={styles.circleRed} />
             </Container>
        </section>
     )

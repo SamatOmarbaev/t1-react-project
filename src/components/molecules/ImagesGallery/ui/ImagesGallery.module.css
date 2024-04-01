@@ -1,0 +1,56 @@
+.ImagesGallery {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    position: relative;
+}
+
+.imagesList {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.backContainerColor {
+    background-color: #e9e9e9;
+}
+
+.controls {
+    position: absolute;
+    top: 37%;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.btn {
+    display: flex;
+    background: var(--white-color);
+    padding: 0.5rem;
+    align-items: center;
+    justify-content: center;
+    outline: none;
+    border: 1px solid var(--dark-color);
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.disabled {
+    opacity: 0.3;
+    cursor: default;
+}
+
+.imageBorder {
+    border: 2px solid var(--blue-bg-color);
+    border-radius: .25rem;
+}
+
+@media (max-width: 768px) {
+    .backContainerColor {
+        margin: 0 auto;
+        width: 100% !important;
+    }
+    .imagesList {
+        overflow-x: auto;
+    }
+}

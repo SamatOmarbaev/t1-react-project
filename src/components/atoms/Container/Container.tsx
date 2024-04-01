@@ -1,6 +1,7 @@
-import classNames from 'classnames';
-import styles from './Container.module.css';
 import { ReactNode } from 'react';
+import classNames from 'classnames';
+
+import styles from './Container.module.css';
 
 interface ContainerProps {
     className?: string;

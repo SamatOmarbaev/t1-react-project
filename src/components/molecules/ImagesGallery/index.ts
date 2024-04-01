@@ -1,0 +1,1 @@
+export { ImagesGallery } from "./ui/ImagesGallery";

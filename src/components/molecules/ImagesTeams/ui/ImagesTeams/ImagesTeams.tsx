@@ -1,14 +1,17 @@
+import { memo } from 'react';
 import classNames from 'classnames';
-import styles from './ImagesTeams.module.css'
+
 import { ImageWithCaption } from '../ImageWithCaption/ImageWithCaption';
 import { ImagePr } from '../../types';
+
+import styles from './ImagesTeams.module.css'
 
 interface ImageGridProps {
     className?: string;
     images: ImagePr[];
 }
 
-export const ImagesTeams = (props: ImageGridProps) => {
+export const ImagesTeams = memo((props: ImageGridProps) => {
     const { images, className } = props;
 
     return (
@@ -20,4 +23,4 @@ export const ImagesTeams = (props: ImageGridProps) => {
             </div>
         </div>
     );
-};
+});

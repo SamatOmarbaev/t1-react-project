@@ -19,6 +19,10 @@
     color: var(--dark-color);
 }
 
+.error {
+    color: var(--red-color-hover);
+}
+
 /* TextAlign */
 .right {
     text-align: right;

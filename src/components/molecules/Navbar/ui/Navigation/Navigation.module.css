@@ -14,7 +14,7 @@
 /* 425px */
 @media (max-width: 425px) {
     .Navigation {
-        gap: 1rem;
+        gap: .75rem;
         flex-wrap: wrap;
     }
 }

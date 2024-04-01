@@ -1,36 +1,37 @@
+import { memo, useCallback, useState } from 'react';
 import classNames from 'classnames';
-import styles from './CheckedList.module.css';
-import { Category } from '../../types';
+
 import { CheckedItem } from '../CheckedItem/CheckedItem';
-import { useCallback, useState } from 'react';
+
+import styles from './CheckedList.module.css';
 
 interface CheckedListProps {
     className?: string;
-    categories: Category[];
+    categories: string[];
 }
 
-export const CheckedList = (props: CheckedListProps) => {
+export const CheckedList = memo((props: CheckedListProps) => {
     const {className, categories} = props;
-    const [selectedCategories, setSelectedCategories] = useState<number[]>([]);
+    const [tempSelectedCategory, setTempSelectedCategory] = useState<Array<string>>([]);
 
-    const handleCheckboxChange = useCallback((categoryId: number) => {
-        if (selectedCategories.includes(categoryId)) {
-            setSelectedCategories(selectedCategories.filter(id => id !== categoryId));
+    const handleCheckboxChange = useCallback((categoryName: string) => {
+        if (tempSelectedCategory.includes(categoryName)) {
+            setTempSelectedCategory(tempSelectedCategory.filter(name => name !== categoryName));
         } else {
-            setSelectedCategories([...selectedCategories, categoryId]);
+            setTempSelectedCategory([...tempSelectedCategory, categoryName]);
         }
-    }, [selectedCategories]);
+    }, [tempSelectedCategory]);
 
     return (
         <div className={classNames(styles.CheckedList, {}, [className])}>
-            {categories.map(category => (
+            {categories.map((category, index) => (
                 <CheckedItem 
                     category={category}
-                    key={category.id} 
-                    checked={selectedCategories.includes(category.id)}
-                    onChange={() => handleCheckboxChange(category.id)}
+                    key={index} 
+                    // checked={categories.includes(category)}
+                    onChange={() => handleCheckboxChange(category)}
                 />
             ))}
         </div>
     )
-}
+})

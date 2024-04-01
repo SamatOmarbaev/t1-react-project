@@ -1,6 +1,8 @@
 import classNames from 'classnames';
-import styles from './QuoteBlock.module.css';
+
 import { TagType, Text, TextSize, TextWeight } from '../../../atoms/Text/Text';
+
+import styles from './QuoteBlock.module.css';
 
 interface QuoteBlockProps {
     className?: string;

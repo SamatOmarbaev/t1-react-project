@@ -1,25 +1,24 @@
+import { memo } from 'react';
+import { Link } from 'react-router-dom';
 import classNames from 'classnames';
-import styles from './ProductCard.module.css';
-import { TagType, Text, TextSize, TextTheme, TextWeight } from '../../atoms/Text/Text';
 
-export interface IProductCard {
-    id: number;
-    src: string;
-    title: string;
-    price: string;
-}
+import { TagType, Text, TextSize, TextTheme, TextWeight } from '../../atoms/Text/Text';
+import { IProductCard } from '../../../helpers/types/types';
+import { MyImage } from '../../atoms/MyImage/MyImage';
+
+import styles from './ProductCard.module.css';
 
 interface ProductCardProps {
     className?: string;
     product: IProductCard;
 }
 
-export const ProductCard = (props: ProductCardProps) => {
+export const ProductCard = memo((props: ProductCardProps) => {
     const {className, product} = props;
 
     return (
-        <article className={classNames(styles.ProductCard, {}, [className])}>
-            <img src={product.src} alt={'product photo'} className={styles.image} />
+        <Link to={`/products/${product.id}`} className={classNames(styles.ProductCard, {}, [className])}>
+            <MyImage src={product.thumbnail} alt='product photo' border='0.25rem' height={300} width={300} className={styles.imageCont} />
             <Text
                 tagType={TagType.h4}
                 size={TextSize.S}
@@ -31,10 +30,10 @@ export const ProductCard = (props: ProductCardProps) => {
             <Text 
                 tagType={TagType.SPAN}
                 size={TextSize.M}
-                tagName={product.price}
+                tagName={product.price + ' $'}
                 theme={TextTheme.DARK_GRAY}
                 weight={TextWeight.REGULAR}
             />
-        </article>
+        </Link>
     )
-}
+})
