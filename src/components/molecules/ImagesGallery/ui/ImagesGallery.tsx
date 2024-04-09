@@ -1,4 +1,4 @@
-import { memo, useState } from 'react';
+import { memo, useEffect, useState } from 'react';
 import classNames from 'classnames';
 import { IoMdArrowDropleft, IoMdArrowDropright } from "react-icons/io";
 
@@ -14,9 +14,23 @@ interface ImagesGalleryProps {
 
 export const ImagesGallery = memo((props: ImagesGalleryProps) => {
     const {className, images} = props;
-    const [currentIndex, setCurrentIndex] = useState(0);
+    const [currentIndex, setCurrentIndex] = useState<number>(0);
     const isPrevDisabled = currentIndex === 0;
     const isNextDisabled = currentIndex === images!.length - 1;
+
+    useEffect(() => {
+        const imageElem = document.getElementsByClassName(styles.mainImg)[0];
+        imageElem.classList.add(styles.fadeInOut);
+        const animationEndHandler = () => {
+            imageElem.classList.remove(styles.fadeInOut);
+            imageElem.removeEventListener('animationend', animationEndHandler);
+        };
+        imageElem.addEventListener('animationend', animationEndHandler);
+    
+        return () => {
+            imageElem.removeEventListener('animationend', animationEndHandler);
+        };
+    }, [currentIndex]);
 
     const changeImage = (index: number) => {
         setCurrentIndex(index)
@@ -36,10 +50,18 @@ export const ImagesGallery = memo((props: ImagesGalleryProps) => {
 
     return (
         <div className={classNames(styles.ImagesGallery, {}, [className])}>
-            <MyImage src={images?.[currentIndex]} height={460} width={520} className={styles.backContainerColor} />
+            <div className={styles.backContainerColor}>
+                <MyImage 
+                    src={images?.[currentIndex]} 
+                    height={'100%'} 
+                    width={'100%'} 
+                    // className={styles.mainImg}  
+                    className={classNames(styles.mainImg, { [styles.fadeInOut]: true })}
+                />
+            </div>
             <ul className={styles.imagesList}>
                 {images?.map((image, index) => (
-                    <Button theme={ButtonTheme.CLEAR} key={index} onClick={() => changeImage(index)} >
+                    <Button theme={ButtonTheme.CLEAR} key={index} onClick={() => changeImage(index)} aria-label='выбор картинки' >
                         <MyImage 
                             src={image} 
                             height={75} 
@@ -50,10 +72,10 @@ export const ImagesGallery = memo((props: ImagesGalleryProps) => {
                 ))}
             </ul>
             <div className={styles.controls}>
-                <button onClick={prevImage} className={classNames(styles.btn, { [styles.disabled]: isPrevDisabled })}>
+                <button aria-label='перелист назад' onClick={prevImage} className={classNames(styles.btn, { [styles.disabled]: isPrevDisabled })}>
                     <IoMdArrowDropleft size={24} />
                 </button>
-                <button onClick={nextImage} className={classNames(styles.btn, { [styles.disabled]: isNextDisabled })}>
+                <button aria-label='перелист вперед' onClick={nextImage} className={classNames(styles.btn, styles.right, { [styles.disabled]: isNextDisabled })}>
                     <IoMdArrowDropright size={24} />
                 </button>
             </div>

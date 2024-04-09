@@ -22,8 +22,8 @@ export const ProductsList = memo((props: ProductsListProps) => {
 
     if (error) {
         return (
-            <div className={classNames(styles.products, {}, [className])}>
-                <Text tagType={TagType.h1} size={TextSize.XXL} tagName={'Товаров нет'} theme={TextTheme.DARK_GRAY} />
+            <div className={classNames(styles.productsError, {}, [className])}>
+            <Text tagType={TagType.h1} size={TextSize.XXL} tagName={'The products was not found'} theme={TextTheme.DARK_GRAY} />
             </div>
         )
     }
@@ -75,11 +75,19 @@ export const ProductsList = memo((props: ProductsListProps) => {
         )
     }
 
+    if (productsData?.length === 0) {
+        return (
+            <div className={classNames(styles.productsError, className)}>
+                <Text tagType={TagType.h1} size={TextSize.XXL} tagName={'The products was not found'} theme={TextTheme.DARK_GRAY} />
+            </div>
+        );
+    }
+
     return (
         <ul className={classNames(styles.ProductsList, {}, [className])}>
             {productsData?.map(product => (
                 <li key={product.id}>
-                    <ProductCard product={product} />
+                    <ProductCard height={290} width={280} product={product} />
                 </li>
             ))}
         </ul>

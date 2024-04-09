@@ -1,7 +1,7 @@
 import { combineReducers } from "@reduxjs/toolkit";
 
 import categoriesReducer from '../features/categories/categoriesSlice/categoriesSlice'
-import productsReducer from '../features/products/productsSlice/productsSlice'
+import productsReducer from '../features/products/slices/productsSlice'
 import { categoriesApi } from "../features/categories/api/categoriesApi";
 import { productsApi } from "../features/products/api/productsApi";
 

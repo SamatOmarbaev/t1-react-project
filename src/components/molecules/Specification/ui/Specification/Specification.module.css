@@ -2,6 +2,7 @@
     width: 100%;
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
     gap: 48px;
 }
 
@@ -9,6 +10,11 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    width: 100%;
+}
+
+.btn {
+    min-width: 300px;
 }
 
 @media (max-width: 425px) {

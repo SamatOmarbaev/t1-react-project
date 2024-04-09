@@ -18,12 +18,12 @@ export const AboutUsSection = (props: AboutUsSectionProps) => {
 
     return (
        <section id="about" className={classNames(styles.AboutUsSection, {}, [className])}>
-            <MyImage src={Image} alt='line' className={styles.image} />
+            <MyImage src={Image} className={styles.image} />
             <Container>
                 <div className={styles.content}>
                     <QuoteBlock className={styles.quote} />
                     <div className={styles.imageContainer}>
-                        <img src={AbousUsMan} alt='just man' className={styles.justManImg}/>
+                        <img src={AbousUsMan} loading='lazy' alt='just man' className={styles.justManImg}/>
                     </div>
                 </div>
             </Container>

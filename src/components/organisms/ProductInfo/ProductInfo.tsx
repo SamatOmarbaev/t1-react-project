@@ -26,7 +26,7 @@ export const ProductInfo = memo((props: ProductInfoProps) => {
                 <Text 
                     tagType={TagType.h1} 
                     size={TextSize.XXL} 
-                    tagName={'Произошла ошибка, попробуйте перезагрузить страницу'} 
+                    tagName={'The product was not found'} 
                     theme={TextTheme.ERROR}
                     align={TextAlign.CENTER}
                 />
@@ -85,7 +85,7 @@ export const ProductInfo = memo((props: ProductInfoProps) => {
                 />
                 <div className={styles.infoContentProduct}>
                     <ImagesGallery images={productData?.images} />
-                    <Specification productSpecification={productData} />
+                    {productData && <Specification productSpecification={productData} />}
                 </div>
             </Container>
         </section>

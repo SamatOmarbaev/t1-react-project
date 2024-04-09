@@ -1,14 +1,12 @@
-import { useEffect } from 'react';
+import { useState } from 'react';
 import classNames from 'classnames';
 
 import { Container } from '../../atoms/Container/Container';
 import { TagType, Text, TextSize, TextTheme } from '../../atoms/Text/Text';
 import { Button, ButtonTheme } from '../../atoms/Button/Button';
 import { CheckedList } from '../../molecules/CheckedList';
-import { useAppDispatch } from '../../../helpers/hooks/useAppDispatch';
-import { useAppSelector } from '../../../helpers/hooks/useAppSelector';
-import { useGetCategoriesQuery } from '../../../features/categories/api/categoriesApi';
-import { setCategories } from '../../../features/categories/categoriesSlice/categoriesSlice';
+import { CheckedProductList } from '../../molecules/CheckedProductList';
+import { useGetProductsByCategoriesQuery } from '../../../features/categories/api/categoriesApi';
 
 import styles from './ProductSelectionSection.module.css';
 
@@ -18,57 +16,48 @@ interface ProductSelectionSectionProps {
 
 export const ProductSelectionSection = (props: ProductSelectionSectionProps) => {
     const {className} = props;
-    const dispatch = useAppDispatch();
-    const categories = useAppSelector((state) => state.categories.categories);
-    const { data: categoriesData } = useGetCategoriesQuery('');
+    const [tempSelectedCategory, setTempSelectedCategory] = useState<string[]>([]);
+    const [applySelectedCategory, setApplySelectedCategory] = useState<string[]>([]);
+    const {data: sortedProducts} = useGetProductsByCategoriesQuery(applySelectedCategory)
+    
+    const handleNextStep = () => {
+        setApplySelectedCategory(tempSelectedCategory)
+    };
 
-    useEffect(() => {
-        if (categoriesData) {
-            dispatch(setCategories(categoriesData));
-        }
-    }, [categoriesData, dispatch]);
+    const changeSelection = () => {
+        setTempSelectedCategory([])
+        setApplySelectedCategory([])
+    }
 
     return (
        <section id="product" className={classNames(styles.ProductSelection, {}, [className])}>
             <Container>
-                <Text 
-                    tagType={TagType.h2}
-                    size={TextSize.Xl}
-                    tagName='We will select the perfect product for you'
-                    theme={TextTheme.DARK_GRAY}
-                    className={styles.title}
-                />
-                <Text 
-                    tagType={TagType.P}
-                    size={TextSize.S}
-                    theme={TextTheme.GRAY}
-                    tagName='Answer three questions and we will send you a catalog with the most suitable products for you.'
-                    className={styles.subTitle}
-                />
-                <Text 
-                    tagType={TagType.P}
-                    size={TextSize.L}
-                    theme={TextTheme.DARK_GRAY}
-                    tagName='What type of product are you considering?'
-                    className={styles.question}
-                />
-                <div className={styles.checkList}>
-                    <CheckedList 
-                        categories={categories}
-                    />
-                </div>
+                {sortedProducts && !(sortedProducts?.length > 0) && <CheckedList tempSelectedCategory={tempSelectedCategory} setTempSelectedCategory={setTempSelectedCategory} />}
+                {sortedProducts && sortedProducts?.length > 0 && <CheckedProductList products={sortedProducts} />}
                 <div className={styles.paginationBottom}>
                     <Text
                         tagType={TagType.SPAN}
                         size={TextSize.S}
                         theme={TextTheme.GRAY}
-                        tagName='1 of 2'
+                        tagName={`${sortedProducts && sortedProducts?.length > 0 ? '2' : '1'} of 2`}
                     />
-                    <Button
-                        theme={ButtonTheme.OUTLINE}
-                    >
-                        Next step
-                    </Button>
+                    {sortedProducts?.length 
+                        ?   <Button
+                                theme={ButtonTheme.OUTLINE}
+                                onClick={changeSelection}
+                                aria-label='к выбору категорий'
+                            >
+                                Change selection
+                                
+                            </Button>
+                        :   <Button
+                                theme={ButtonTheme.OUTLINE}
+                                onClick={handleNextStep}
+                                aria-label='к переходу товары по выбранным категориям'
+                            >
+                                Next step
+                            </Button>
+                    }
                 </div>
             </Container>
        </section>

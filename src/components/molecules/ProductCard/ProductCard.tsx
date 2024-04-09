@@ -10,19 +10,21 @@ import styles from './ProductCard.module.css';
 
 interface ProductCardProps {
     className?: string;
-    product: IProductCard;
+    product?: IProductCard;
+    width: string | number;
+    height: string | number;
 }
 
 export const ProductCard = memo((props: ProductCardProps) => {
-    const {className, product} = props;
+    const {className, product, width, height} = props;
 
     return (
-        <Link to={`/products/${product.id}`} className={classNames(styles.ProductCard, {}, [className])}>
-            <MyImage src={product.thumbnail} alt='product photo' border='0.25rem' height={300} width={300} className={styles.imageCont} />
+        <Link to={`/products/${product?.id}`} className={classNames(styles.ProductCard, {}, [className])}>
+            <MyImage src={product?.thumbnail} alt='product photo' border='0.25rem' height={height} width={width} className={styles.imageCont} />
             <Text
                 tagType={TagType.h4}
                 size={TextSize.S}
-                tagName={product.title}
+                tagName={product?.title}
                 theme={TextTheme.DARK_GRAY}
                 className={styles.title}
                 weight={TextWeight.SEMIBOLD}
@@ -30,7 +32,7 @@ export const ProductCard = memo((props: ProductCardProps) => {
             <Text 
                 tagType={TagType.SPAN}
                 size={TextSize.M}
-                tagName={product.price + ' $'}
+                tagName={product?.price + ' $'}
                 theme={TextTheme.DARK_GRAY}
                 weight={TextWeight.REGULAR}
             />

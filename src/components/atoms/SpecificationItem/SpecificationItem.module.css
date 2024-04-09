@@ -3,3 +3,12 @@
     align-items: center;
     gap: 10px;
 }
+.max {
+    width: 100%;
+}
+.property {
+    overflow: hidden;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
+}

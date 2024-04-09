@@ -1,0 +1,22 @@
+.starRating {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.starIcon {
+  cursor: pointer;
+  stroke: var(--red-color);
+}
+
+.normal {
+  fill: none;
+}
+
+.hovered {
+  fill: var(--red-color);
+}
+
+.selected {
+  cursor: auto;
+}

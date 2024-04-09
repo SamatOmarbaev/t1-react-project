@@ -12,10 +12,11 @@ interface NavbarProps {
     className?: string;
     borderBottom?: boolean;
     last?: boolean;
+    isAdminPage?: boolean;
 }
 
 export const Navbar = (props: NavbarProps) => {
-    const {className, borderBottom, last} = props;
+    const {className, borderBottom, last, isAdminPage} = props;
 
     const mods = {
         [styles.borderBottom]: borderBottom,
@@ -23,11 +24,11 @@ export const Navbar = (props: NavbarProps) => {
 
     return (
         <Container>
-            <div className={classNames(styles.Navbar, mods, [className])}>
+            <div className={classNames(styles.Navbar, mods, [className])} role='navigation'>
                 <Link to={RoutePath.HOME}>
                     <Text tagName='Goods4you' tagType={TagType.h1} size={TextSize.Xl} />
                 </Link>
-                <Navigation last={last} />
+                <Navigation isAdminPage={isAdminPage} last={last} />
             </div>
         </Container>
     )

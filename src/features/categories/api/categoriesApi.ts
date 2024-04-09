@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
-import { Products } from "../../../helpers/types/types";
+import { IProductCard, Products } from "../../../helpers/types/types";
 
 export const categoriesApi = createApi({
   reducerPath: "categoriesApi",
@@ -16,7 +16,13 @@ export const categoriesApi = createApi({
         return category ? `/category/${category}${query}` : query
       },
     }),
+    getProductsByCategories: builder.query({
+      queryFn: async (categories: string[], _, __, baseQuery) => {
+        const result = await Promise.all(categories.map(category => baseQuery(`/category/${category}`)))
+        return {data: (result.flatMap(res => res.data.products) as IProductCard[]).sort((a, b) => b.rating - a.rating).slice(0, 3)}
+      }
+    })
   }),
 });
 
-export const { useGetCategoriesQuery, useGetProductsByCategoryQuery } = categoriesApi;
+export const { useGetCategoriesQuery, useGetProductsByCategoryQuery, useGetProductsByCategoriesQuery } = categoriesApi;

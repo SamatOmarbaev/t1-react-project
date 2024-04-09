@@ -9,10 +9,7 @@
 .btn {
     width: 120px;
     height: 57px;
-    padding: 0;
-    background-color: transparent;
     border: 1px solid var(--category-border-color);
-    border-radius: 0;
 }
 
 .active {
@@ -21,4 +18,22 @@
 
 .activeColor {
     color: var(--white-color);
+}
+
+.input {
+    display: none;
+}
+.label {
+    display: block;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+.text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    text-align: center;
 }

@@ -36,6 +36,7 @@ export const HeroSection = (props: HeroSectionProps) => {
                     theme={ButtonTheme.RED}
                     textColor={ButtonTextColor.WHITE}
                     className={styles.btn}
+                    aria-label='переходи на страницу магазина'
                 >
                     Go to shopping
                 </Button>
