@@ -1,9 +1,7 @@
 import { combineReducers } from "@reduxjs/toolkit";
 
-import categoriesReducer from '../features/categories/categoriesSlice/categoriesSlice'
-import productsReducer from '../features/products/slices/productsSlice'
-import { categoriesApi } from "../features/categories/api/categoriesApi";
-import { productsApi } from "../features/products/api/productsApi";
+import { categoriesApi, categoriesReducer } from "@/features/categories";
+import { productsApi, productsReducer } from "@/features/products";
 
 export const rootReducers = combineReducers({
     categories: categoriesReducer,

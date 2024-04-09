@@ -3,7 +3,7 @@ import classNames from 'classnames';
 
 interface IconWrapperProps extends React.SVGProps<SVGSVGElement> {
   className?: string;
-  Svg: React.VFC<React.SVGProps<SVGSVGElement>>;
+  Svg: React.VFC<React.SVGProps<SVGSVGElement>> | string;
 }
 
 export const IconWrapper = memo((props: IconWrapperProps) => {

@@ -7,7 +7,7 @@
     width: 100%;
 }
 
-input[type="checkbox"] {
+.inputChange {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
@@ -19,14 +19,14 @@ input[type="checkbox"] {
     cursor: pointer;
 }
 
-input[type="checkbox"]:checked {
+.inputChange:checked {
     background-color: var(--category-border-color);
 }
 
 
 /* 425px */
 @media (max-width: 425px) {
-    input[type="checkbox"] {
+    .inputChange {
         width: 20px;
         height: 20px;
     }

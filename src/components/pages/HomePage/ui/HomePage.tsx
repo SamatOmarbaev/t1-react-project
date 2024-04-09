@@ -1,6 +1,6 @@
-import { Footer } from '../../../organisms/Footer/Footer';
-import { Header } from '../../../organisms/Header/Header';
-import { HomePageTemplate } from '../../../templates/HomePageTemplate/HomePageTemplate';
+import { Footer } from '@/components/organisms/Footer';
+import { Header } from '@/components/organisms/Header';
+import { HomePageTemplate } from '@/components/templates/HomePageTemplate';
 
 const HomePage = () => {
     return (

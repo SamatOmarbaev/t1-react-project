@@ -1,12 +1,12 @@
 import { memo, useState } from 'react';
 import classNames from 'classnames';
 
-import { TagType, Text, TextSize, TextTheme, TextWeight } from '../../../../atoms/Text/Text';
-import { SpecificationItem } from '../../../../atoms/SpecificationItem/SpecificationItem';
+import { TagType, Text, TextSize, TextTheme, TextWeight } from '@/components/atoms/Text';
+import { SpecificationItem } from '@/components/atoms/SpecificationItem';
 import { SpecificationList } from '../SpecificationList/SpecificationList';
-import { IProductCard } from '../../../../../helpers/types/types';
-import { Button, ButtonTextColor, ButtonTheme } from '../../../../atoms/Button/Button';
-import { useChangeProductByIdMutation } from '../../../../../features/products/api/productsApi';
+import { Button, ButtonTextColor, ButtonTheme } from '@/components/atoms/Button';
+import { IProductCard } from '@/helpers/types';
+import { useChangeProductByIdMutation } from '@/features/products';
 
 import styles from './Specification.module.css';
 

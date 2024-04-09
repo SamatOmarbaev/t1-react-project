@@ -2,13 +2,13 @@ import { memo } from 'react';
 import classNames from 'classnames';
 
 import { ImageWithCaption } from '../ImageWithCaption/ImageWithCaption';
-import { ImagePr } from '../../types';
+import { ImageTypes } from '../../types';
 
 import styles from './ImagesTeams.module.css'
 
 interface ImageGridProps {
     className?: string;
-    images: ImagePr[];
+    images: ImageTypes[];
 }
 
 export const ImagesTeams = memo((props: ImageGridProps) => {

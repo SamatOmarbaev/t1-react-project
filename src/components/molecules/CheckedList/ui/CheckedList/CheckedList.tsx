@@ -2,11 +2,9 @@ import { Dispatch, SetStateAction, memo, useCallback, useEffect } from 'react';
 import classNames from 'classnames';
 
 import { CheckedItem } from '../CheckedItem/CheckedItem';
-import { TagType, Text, TextSize, TextTheme } from '../../../../atoms/Text/Text';
-import { useAppDispatch } from '../../../../../helpers/hooks/useAppDispatch';
-import { useAppSelector } from '../../../../../helpers/hooks/useAppSelector';
-import { useGetCategoriesQuery } from '../../../../../features/categories/api/categoriesApi';
-import { setCategories } from '../../../../../features/categories/categoriesSlice/categoriesSlice';
+import { TagType, Text, TextSize, TextTheme } from '@/components/atoms/Text';
+import { useAppDispatch, useAppSelector } from '@/helpers/hooks';
+import { setCategories, useGetCategoriesQuery } from '@/features/categories';
 
 import styles from './CheckedList.module.css';
 
@@ -46,15 +44,12 @@ export const CheckedList = memo((props: CheckedListProps) => {
                 className={styles.title}
             />
             <Text 
-                tagType={TagType.P}
-                size={TextSize.S}
                 theme={TextTheme.GRAY}
                 tagName='Answer three questions and we will send you a catalog with the most suitable products for you.'
                 className={styles.subTitle}
             />
             <div className={styles.checkList}>
                 <Text 
-                    tagType={TagType.P}
                     size={TextSize.L}
                     theme={TextTheme.DARK_GRAY}
                     tagName='What type of product are you considering?'

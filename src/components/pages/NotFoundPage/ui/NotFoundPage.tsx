@@ -1,8 +1,8 @@
 import { useNavigate } from 'react-router-dom';
 
-import { TagType, Text, TextSize, TextTheme } from '../../../atoms/Text/Text';
-import { Button, ButtonTheme } from '../../../atoms/Button/Button';
-import { RoutePath } from '../../../../router/routes';
+import { Button, ButtonTheme } from '@/components/atoms/Button';
+import { TagType, Text, TextSize, TextTheme } from '@/components/atoms/Text';
+import { RoutePath } from '@/router/routes';
 
 import styles from './NotFoundPage.module.css'
 
@@ -19,11 +19,10 @@ const NotFoundPage = () => {
             />
             <Text 
                 size={TextSize.L}
-                tagType={TagType.P}
                 theme={TextTheme.GRAY}
                 tagName='Sorry, the page you visited does not exist.'
             />
-            <Button 
+            <Button
                 onClick={() => navigate(RoutePath.HOME)}
                 theme={ButtonTheme.OUTLINE}
                 aria-label='вернуться домой'

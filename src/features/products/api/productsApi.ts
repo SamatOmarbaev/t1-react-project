@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
-import { IProductCard, Products } from "../../../helpers/types/types";
+import { IProductCard, Products } from "@/helpers/types";
 
 export const productsApi = createApi({
   reducerPath: "productsApi",
@@ -12,15 +12,6 @@ export const productsApi = createApi({
         const query = `${!search ? '?' : ''}limit=${limit}&skip=${skip}`;
         return search ? `/search?q=${search}` : query
       }
-      /*query: ({limit = 9, skip, search}) => {
-        const params = new URLSearchParams();
-        if (skip) params.append('skip', skip.toString());
-        const query = `${search ? `/search?q=${search}${limit ? '&' : ''}` : ''}${limit ? `?limit=${limit}&skip=${skip}` : ''}${params.toString()}`
-        
-        return {
-          url: query
-        }
-      }*/
     }),
     getProductById: builder.query<IProductCard, {id?: string}>({
       query: ({id}) => `/${id}`,

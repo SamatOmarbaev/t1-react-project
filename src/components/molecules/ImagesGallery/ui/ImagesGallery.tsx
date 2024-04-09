@@ -2,8 +2,8 @@ import { memo, useEffect, useState } from 'react';
 import classNames from 'classnames';
 import { IoMdArrowDropleft, IoMdArrowDropright } from "react-icons/io";
 
-import { Button, ButtonTheme } from '../../../atoms/Button/Button';
-import { MyImage } from '../../../atoms/MyImage/MyImage';
+import { Button, ButtonTheme } from '@/components/atoms/Button';
+import { MyImage } from '@/components/atoms/MyImage';
 
 import styles from './ImagesGallery.module.css';
 
@@ -55,7 +55,6 @@ export const ImagesGallery = memo((props: ImagesGalleryProps) => {
                     src={images?.[currentIndex]} 
                     height={'100%'} 
                     width={'100%'} 
-                    // className={styles.mainImg}  
                     className={classNames(styles.mainImg, { [styles.fadeInOut]: true })}
                 />
             </div>

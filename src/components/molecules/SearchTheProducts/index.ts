@@ -1,0 +1,1 @@
+export { SearchTheProducts } from "./ui/SearchTheProducts";
