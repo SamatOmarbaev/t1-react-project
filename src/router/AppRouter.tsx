@@ -2,11 +2,11 @@ import { Suspense } from "react"
 import { Route, Routes } from "react-router-dom"
 
 import { RoutePath } from "./routes"
-import { HomePage } from "../components/pages/HomePage"
-import { AdminPage } from "../components/pages/AdminPage"
-import { PageDetails } from "../components/pages/PageDetails"
-import { NotFoundPage } from "../components/pages/NotFoundPage"
-import { Loader } from "../components/atoms/Loader/Loader"
+import { Loader } from "@/components/atoms/Loader"
+import { AdminPage } from "@/components/pages/AdminPage"
+import { HomePage } from "@/components/pages/HomePage"
+import { NotFoundPage } from "@/components/pages/NotFoundPage"
+import { PageDetails } from "@/components/pages/PageDetails"
 
 export const AppRouter = () => {
     return (

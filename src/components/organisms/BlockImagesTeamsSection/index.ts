@@ -1,0 +1,1 @@
+export { BlockImagesTeamsSection } from "./ui/BlockImagesTeamsSection";

@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 
-import { TagType, Text, TextSize } from '../../../../atoms/Text/Text';
+import { TagType, Text, TextSize } from '@/components/atoms/Text';
 import { Navigation } from '../Navigation/Navigation';
-import { Container } from '../../../../atoms/Container/Container';
-import { RoutePath } from '../../../../../router/routes';
+import { Container } from '@/components/atoms/Container';
+import { RoutePath } from '@/router/routes';
 
 import styles from './Navbar.module.css';
 

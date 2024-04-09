@@ -1,7 +1,7 @@
 import { memo } from 'react';
 import classNames from 'classnames';
 
-import { TagType, Text, TextSize, TextTheme } from '../../../../atoms/Text/Text';
+import { TagType, Text, TextTheme } from '@/components/atoms/Text';
 
 import styles from './CheckedItem.module.css';
 
@@ -22,9 +22,8 @@ export const CheckedItem = memo((props: CheckedItemProps) => {
 
     return (
         <label className={classNames(styles.CheckedItem, {}, [className])}>
-            <input type="checkbox" onChange={handleChange} aria-label='выбрать категорию' />
-            <Text 
-                size={TextSize.S}
+            <input className={styles.inputChange} type="checkbox" onChange={handleChange} aria-label='выбрать категорию' />
+            <Text
                 tagType={TagType.SPAN}
                 theme={TextTheme.DARK_GRAY}
                 tagName={category}

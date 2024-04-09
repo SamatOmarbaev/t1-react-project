@@ -1,8 +1,8 @@
 import classNames from 'classnames';
 
-import { TagType, Text, TextSize, TextTheme } from '../../../atoms/Text/Text';
-import { ProductCard } from '../../ProductCard/ProductCard';
-import { IProductCard } from '../../../../helpers/types/types';
+import { Text, TextSize, TextTheme } from '@/components/atoms/Text';
+import { IProductCard } from '@/helpers/types';
+import { ProductCard } from '../../ProductCard';
 
 import styles from './CheckedProductList.module.css';
 
@@ -17,7 +17,6 @@ export const CheckedProductList = (props: CheckedProductListProps) => {
     return (
         <div className={classNames(styles.CheckedProductList, {}, [className])}>
             <Text
-                tagType={TagType.P}
                 size={TextSize.L}
                 theme={TextTheme.DARK_GRAY}
                 tagName='What type of product are you considering?'

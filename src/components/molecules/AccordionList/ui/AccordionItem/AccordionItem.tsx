@@ -2,7 +2,7 @@ import { memo, useRef, useState } from 'react';
 import classNames from 'classnames';
 import { RxCross1 } from "react-icons/rx";
 
-import { TagType, Text, TextSize, TextTheme } from '../../../../atoms/Text/Text';
+import { TagType, Text, TextSize, TextTheme } from '@/components/atoms/Text';
 import { FAQItem } from '../../types';
 
 import styles from './AccordionItem.module.css';
@@ -44,8 +44,6 @@ export const AccordionItem = memo((props: AccordionItemProps) => {
                     ref={contentRef}
                 >
                     <Text
-                        tagType={TagType.P}
-                        size={TextSize.S}
                         tagName={faq.content}
                         theme={TextTheme.GRAY}
                     />

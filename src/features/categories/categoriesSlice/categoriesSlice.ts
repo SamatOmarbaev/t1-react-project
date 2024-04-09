@@ -25,4 +25,4 @@ const categoriesSlice = createSlice({
 
 export const { setCategories, setSelectedCategory } = categoriesSlice.actions;
 
-export default categoriesSlice.reducer;
+export const categoriesReducer = categoriesSlice.reducer;

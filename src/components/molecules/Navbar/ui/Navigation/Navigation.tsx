@@ -1,8 +1,8 @@
 import { memo } from 'react';
 import classNames from 'classnames';
 
-import { Applink } from '../../../../atoms/Applink/Applink';
-import { RoutePath } from '../../../../../router/routes';
+import { Applink } from '@/components/atoms/Applink';
+import { RoutePath } from '@/router/routes';
 
 import styles from './Navigation.module.css';
 

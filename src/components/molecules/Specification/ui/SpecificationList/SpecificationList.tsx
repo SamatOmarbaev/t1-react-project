@@ -1,10 +1,10 @@
 import { memo, useCallback, useState } from 'react';
 import classNames from 'classnames';
 
-import { SpecificationItem } from '../../../../atoms/SpecificationItem/SpecificationItem';
-import { IProductCard } from '../../../../../helpers/types/types';
-import { StarRating } from '../../../../atoms/StarRating/StarRating';
-import { TagType, Text, TextSize, TextTheme } from '../../../../atoms/Text/Text';
+import { IProductCard } from '@/helpers/types';
+import { TagType, Text, TextTheme } from '@/components/atoms/Text';
+import { SpecificationItem } from '@/components/atoms/SpecificationItem';
+import { StarRating } from '@/components/atoms/StarRating';
 
 import styles from './SpecificationList.module.css';
 
@@ -58,7 +58,7 @@ export const SpecificationList = memo((props: SpecificationListProps) => {
 
     const ratingIcons = (
         <div className={styles.rating}>
-            <Text theme={TextTheme.GRAY} tagName={"Rating"} tagType={TagType.SPAN} size={TextSize.S} />
+            <Text theme={TextTheme.GRAY} tagName={"Rating"} tagType={TagType.SPAN} />
             <StarRating selectedStars={starsCount} size={20} onSelect={onSelectedStars} />
         </div>
     )
@@ -67,7 +67,7 @@ export const SpecificationList = memo((props: SpecificationListProps) => {
         return (
             <ul className={classNames(styles.SpecificationList, {}, [className])}>
                 {ratingIcons}
-                <SpecificationItem 
+                <SpecificationItem
                     name={'Base price'} 
                     property={<input type="text" value={basePrice} onChange={handleBasePriceChange} className={styles.input} />} 
                     max

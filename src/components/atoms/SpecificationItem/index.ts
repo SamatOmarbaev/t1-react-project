@@ -1,0 +1,1 @@
+export { SpecificationItem } from "./ui/SpecificationItem";

@@ -1,4 +1,4 @@
-export interface ImagePr {
+export interface ImageTypes {
     src: string;
     caption: string;
     name: string;

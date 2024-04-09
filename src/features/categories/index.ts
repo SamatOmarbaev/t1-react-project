@@ -1,0 +1,2 @@
+export { setCategories, setSelectedCategory, categoriesReducer } from "./categoriesSlice/categoriesSlice";
+export { categoriesApi, useGetCategoriesQuery, useGetProductsByCategoriesQuery, useGetProductsByCategoryQuery } from "./api/categoriesApi";

@@ -1,5 +1,5 @@
-import { Header } from "../../../organisms/Header/Header";
-import { PageDetailsTemplate } from "../../../templates/PageDetailsTemplate/PageDetailsTemplate";
+import { Header } from "@/components/organisms/Header";
+import { PageDetailsTemplate } from "@/components/templates/PageDetailsTemplate";
 
 const PageDetails = () => {
     return (

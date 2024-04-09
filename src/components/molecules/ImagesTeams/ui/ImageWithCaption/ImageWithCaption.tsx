@@ -1,15 +1,15 @@
 import { memo } from 'react';
 import classNames from 'classnames';
 
-import { TagType, Text, TextAlign, TextSize } from '../../../../atoms/Text/Text';
-import { ImagePr } from '../../types';
-import { MyImage } from '../../../../atoms/MyImage/MyImage';
+import { TagType, Text, TextAlign, TextSize } from '@/components/atoms/Text';
+import { MyImage } from '@/components/atoms/MyImage';
+import { ImageTypes } from '../../types';
 
 import styles from './ImageWithCaption.module.css'
 
 interface ImageWithCaptionProps {
     className?: string;
-    image: ImagePr;
+    image: ImageTypes;
 }
 
 export const ImageWithCaption = memo((props: ImageWithCaptionProps) => {
@@ -28,7 +28,6 @@ export const ImageWithCaption = memo((props: ImageWithCaptionProps) => {
                 <Text 
                     align={TextAlign.CENTER} 
                     tagType={TagType.SPAN}
-                    size={TextSize.S}
                     tagName={image.caption}
                 />
             </div>

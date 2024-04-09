@@ -1,5 +1,5 @@
-import { Header } from "../../../organisms/Header/Header";
-import { AdminPageTemplate } from "../../../templates/AdminPageTemplate/AdminPageTemplate";
+import { Header } from "@/components/organisms/Header";
+import { AdminPageTemplate } from "@/components/templates/AdminPageTemplate";
 
 const AdminPage = () => {
     return (
